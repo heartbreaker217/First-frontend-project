@@ -1,16 +1,16 @@
 import readlineSync from 'readline-sync';
 import greeting from '../cli.js';
-import { rules, isEven } from '../index.js';
+import { getGCD, rules } from '../index.js';
 
-const even = () => {
+const gcd = () => {
   // Приветствие (сохраняем имя пользователя)
   const username = greeting();
   // Правила КОНКРЕТНОЙ игры
-  rules('Answer "yes" if the number is even, otherwise answer "no"');
+  rules('Find the greatest common divisor of given numbers.');
   // Общий цикл для всех игр
   for (let i = 0; i < 3;) {
   // Формируем вопрос и правильный ответ
-    const correctAnswer = isEven();
+    const correctAnswer = getGCD();
     // Ответ пользователя (сохраняем)
     const userAnswer = readlineSync.question('Your answer: ');
     // Проверяем правильность ответа
@@ -25,4 +25,4 @@ const even = () => {
   return console.log(`Congratulations, ${username}!`);
 };
 
-export default even;
+export default gcd;

@@ -1,6 +1,6 @@
 import readlineSync from 'readline-sync';
 import greeting from '../cli.js';
-import { getRandom, rules } from '../index.js';
+import { getCalc, rules } from '../index.js';
 
 const calc = () => {
   // Приветствие (сохраняем имя пользователя)
@@ -10,28 +10,9 @@ const calc = () => {
   // Общий цикл для всех игр
   for (let i = 0; i < 3;) {
   // Формируем вопрос и правильный ответ
-    const random1 = getRandom(100);
-    const random2 = getRandom(100);
-    const operatorIndex = getRandom(3);
-    let operator = '';
-    if (operatorIndex === 0) {
-      operator = '+';
-    } else if (operatorIndex === 1) {
-      operator = '-';
-    } else {
-      operator = '*';
-    }
-    console.log(`Question: ${random1} ${operator} ${random2}`);
-    let correctAnswer;
-    if (operatorIndex === 0) {
-      correctAnswer = random1 + random2;
-    } else if (operatorIndex === 1) {
-      correctAnswer = random1 - random2;
-    } else {
-      correctAnswer = random1 * random2;
-    }
+    const correctAnswer = getCalc();
     // Ответ пользователя (сохраняем)
-    const userAnswer = readlineSync.questionInt('Your answer: ');
+    const userAnswer = readlineSync.question('Your answer: ');
     // Проверяем правильность ответа
     if (userAnswer === correctAnswer) {
       console.log('Correct!');
