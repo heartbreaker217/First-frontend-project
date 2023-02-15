@@ -8,6 +8,14 @@ const getRandom = (max) => {
   return random;
 };
 
+// Функция, возвращающая случайное число в промежутке [min, max]
+const getRandomInt = (min, max) => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  const randomInt = Math.floor(Math.random() * (max - min + 1)) + min;
+  return randomInt;
+};
+
 // Функция, которая выводит на экран правила игры и запрашивает имя пользователя
 const intro = (rules) => {
   const username = greeting();
@@ -19,6 +27,30 @@ const intro = (rules) => {
 const getAnswer = () => {
   const answer = readlineSync.question('Your answer: ');
   return answer;
+};
+
+// Функция, возвращающая арифметическую прогрессию от 5 до 10 чисел с одним пропущенным числом
+const arithmeticProgression = () => {
+  const progressionLength = getRandomInt(5, 10);
+  const firstNumber = getRandom(101);
+  const progressionStep = getRandomInt(1, 10);
+  const progressionArr = [firstNumber];
+
+  for (let i = 0; i < progressionLength - 1; i += 1) {
+    progressionArr.push(progressionArr[i] + progressionStep);
+  }
+
+  const correctAnswer = progressionArr[getRandom(progressionLength)];
+
+  for (let j = 0; j < progressionLength; j += 1) {
+    if (progressionArr[j] === correctAnswer) {
+      progressionArr[j] = '..';
+      break;
+    }
+  }
+  console.log(`Question: ${progressionArr.join(' ')}`);
+
+  return correctAnswer.toString();
 };
 
 // Функция, возвращающая НОД двух случайный чисел из промежутка [0, 100]
@@ -82,5 +114,5 @@ const isEven = () => {
 };
 
 export {
-  getRandom, intro, getGCD, getCalc, isEven, getAnswer,
+  getRandom, intro, getGCD, getCalc, isEven, getAnswer, getRandomInt, arithmeticProgression,
 };
