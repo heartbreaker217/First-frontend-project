@@ -1,18 +1,14 @@
-import readlineSync from 'readline-sync';
-import greeting from '../cli.js';
-import { rules, isEven } from '../index.js';
+import { isEven, intro, getAnswer } from '../index.js';
 
 const even = () => {
   // Приветствие (сохраняем имя пользователя)
-  const username = greeting();
-  // Правила КОНКРЕТНОЙ игры
-  rules('Answer "yes" if the number is even, otherwise answer "no"');
+  const username = intro('Answer "yes" if the number is even, otherwise answer "no"');
   // Общий цикл для всех игр
   for (let i = 0; i < 3;) {
   // Формируем вопрос и правильный ответ
     const correctAnswer = isEven();
     // Ответ пользователя (сохраняем)
-    const userAnswer = readlineSync.question('Your answer: ');
+    const userAnswer = getAnswer();
     // Проверяем правильность ответа
     if (userAnswer === correctAnswer) {
       console.log('Correct!');

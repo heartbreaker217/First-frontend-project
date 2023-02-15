@@ -1,4 +1,6 @@
 /* eslint-disable no-param-reassign */
+import readlineSync from 'readline-sync';
+import greeting from './cli.js';
 
 // Функция, возвращающая случайное число в промежутке [0, max)
 const getRandom = (max) => {
@@ -6,15 +8,23 @@ const getRandom = (max) => {
   return random;
 };
 
-// Функция, которая выводит на экран правила игры
-const rules = (str) => {
-  console.log(str);
+// Функция, которая выводит на экран правила игры и запрашивает имя пользователя
+const intro = (rules) => {
+  const username = greeting();
+  console.log(rules);
+  return username;
 };
 
-// Функция, возвращающая НОД двух случайный чисел из промежутка [0, 100)
+// Функция, запрашивающая ответ пользователя
+const getAnswer = () => {
+  const answer = readlineSync.question('Your answer: ');
+  return answer;
+};
+
+// Функция, возвращающая НОД двух случайный чисел из промежутка [0, 100]
 const getGCD = () => {
-  let a = getRandom(100);
-  let b = getRandom(100);
+  let a = getRandom(101);
+  let b = getRandom(101);
   console.log(`Question: ${a} ${b}`);
 
   while (a !== 0 && b !== 0) {
@@ -31,10 +41,10 @@ const getGCD = () => {
   return correctAnswer.toString();
 };
 
-// Функция, выполняющая операции "+, - и *" с двумя случайными числами в промежутке [0, 100)
+// Функция, выполняющая операции "+, - и *" с двумя случайными числами в промежутке [0, 100]
 const getCalc = () => {
-  const random1 = getRandom(100);
-  const random2 = getRandom(100);
+  const random1 = getRandom(101);
+  const random2 = getRandom(101);
   const operatorIndex = getRandom(3);
   let operator = '';
   if (operatorIndex === 0) {
@@ -57,9 +67,9 @@ const getCalc = () => {
   return correctAnswer;
 };
 
-// Функция, определяющая четность случайного числа из промежутка [0, 100)
+// Функция, определяющая четность случайного числа из промежутка [0, 100]
 const isEven = () => {
-  const random = getRandom(100);
+  const random = getRandom(101);
   console.log(`Question: ${random}`);
   let correctAnswer;
   if (random % 2 === 0) {
@@ -72,5 +82,5 @@ const isEven = () => {
 };
 
 export {
-  getRandom, rules, getGCD, getCalc, isEven,
+  getRandom, intro, getGCD, getCalc, isEven, getAnswer,
 };
