@@ -1,12 +1,12 @@
-import { arithProgression, intro, getAnswer } from '../index.js';
+import { isPrime, intro, getAnswer } from '../index.js';
 
-const progression = () => {
+const prime = () => {
   // Приветствие (сохраняем имя пользователя)
-  const username = intro('What number is missing in the progression?');
+  const username = intro('Answer "yes" if given number is prime. Otherwise answer "no".');
   // Общий цикл для всех игр
   for (let i = 0; i < 3;) {
   // Формируем вопрос и правильный ответ
-    const correctAnswer = arithProgression();
+    const correctAnswer = isPrime();
     // Ответ пользователя (сохраняем)
     const userAnswer = getAnswer();
     // Проверяем правильность ответа
@@ -21,4 +21,4 @@ const progression = () => {
   return console.log(`Congratulations, ${username}!`);
 };
 
-export default progression;
+export default prime;

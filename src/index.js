@@ -29,8 +29,29 @@ const getAnswer = () => {
   return answer;
 };
 
+// Функция, определяющая простоту случайного числа из промежутка [0, 100]
+const isPrime = () => {
+  const number = getRandom(101);
+  console.log(`Question: ${number}`);
+  if (number < 2) {
+    const correctAnswer = 'no';
+    return correctAnswer;
+  }
+  let divider = 2;
+  while (divider <= number / 2) {
+    if (number % divider === 0) {
+      const correctAnswer = 'no';
+      return correctAnswer;
+    }
+    divider += 1;
+  }
+
+  const correctAnswer = 'yes';
+  return correctAnswer;
+};
+
 // Функция, возвращающая арифметическую прогрессию от 5 до 10 чисел с одним пропущенным числом
-const arithmeticProgression = () => {
+const arithProgression = () => {
   const progressionLength = getRandomInt(5, 10);
   const firstNumber = getRandom(101);
   const progressionStep = getRandomInt(1, 10);
@@ -114,5 +135,5 @@ const isEven = () => {
 };
 
 export {
-  getRandom, intro, getGCD, getCalc, isEven, getAnswer, getRandomInt, arithmeticProgression,
+  getRandom, intro, getGCD, getCalc, isEven, getAnswer, getRandomInt, arithProgression, isPrime,
 };
