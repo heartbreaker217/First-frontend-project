@@ -32,7 +32,7 @@ yarn-debug.log*
 doc
 .env
 
-.DS_Store
+/.DS_Store
 
 # Ignore coverage files
 /coverage
