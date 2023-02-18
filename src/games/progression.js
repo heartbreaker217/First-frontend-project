@@ -1,12 +1,12 @@
-import { arithProgression, intro, getAnswer } from '../index.js';
+import { getProgression, makeIntro, getAnswer } from '../index.js';
 
 const progression = () => {
   // Приветствие (сохраняем имя пользователя)
-  const username = intro('What number is missing in the progression?');
+  const username = makeIntro('What number is missing in the progression?');
   // Общий цикл для всех игр
   for (let i = 0; i < 3;) {
   // Формируем вопрос и правильный ответ
-    const correctAnswer = arithProgression();
+    const correctAnswer = getProgression();
     // Ответ пользователя (сохраняем)
     const userAnswer = getAnswer();
     // Проверяем правильность ответа

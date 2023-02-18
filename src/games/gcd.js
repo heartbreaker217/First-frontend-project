@@ -1,8 +1,8 @@
-import { getGCD, intro, getAnswer } from '../index.js';
+import { getGCD, makeIntro, getAnswer } from '../index.js';
 
 const gcd = () => {
   // Приветствие (сохраняем имя пользователя)
-  const username = intro('Find the greatest common divisor of given numbers.');
+  const username = makeIntro('Find the greatest common divisor of given numbers.');
   // Общий цикл для всех игр
   for (let i = 0; i < 3;) {
   // Формируем вопрос и правильный ответ

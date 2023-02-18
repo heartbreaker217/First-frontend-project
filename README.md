@@ -1,4 +1,4 @@
-# Brain-Games 🎓
+# Brain-Games
 
 ### Hexlet tests and Code Climate status:
 [![Actions Status](https://github.com/heartbreaker217/frontend-project-44/workflows/hexlet-check/badge.svg)](https://github.com/heartbreaker217/frontend-project-44/actions)
@@ -9,13 +9,13 @@ Hello everybody! My name is Vova Lokotkov and this is my first **frontend projec
 ## Installation:
 
 1. Clone this repository on your PC
-2. Open terminal, go to project directory and write `sudo npm link`.
+2. Open terminal, go to project directory and write `sudo npm install`, then `sudo npm link`.  
 *P.S. Make sure that you have already installed Node.js*
 
 ## How to play:
 
-There are five console games realised! 😱
-To choose one of them, write `brain-even`, `brain-calc`, `brain-gcd`, `brain-progression` or `brain-prime` in your console.
+There are five console games realised! 😱  
+To choose one of them, write `brain-even`, `brain-calc`, `brain-gcd`, `brain-progression` or `brain-prime` in your console.  
 Answer the questions correctly three times in a row and you will become a G.O.A.T. 🐐
 
 ## Video demonstrations:

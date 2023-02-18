@@ -1,8 +1,8 @@
-import { isPrime, intro, getAnswer } from '../index.js';
+import { isPrime, makeIntro, getAnswer } from '../index.js';
 
 const prime = () => {
   // Приветствие (сохраняем имя пользователя)
-  const username = intro('Answer "yes" if given number is prime. Otherwise answer "no".');
+  const username = makeIntro('Answer "yes" if given number is prime. Otherwise answer "no".');
   // Общий цикл для всех игр
   for (let i = 0; i < 3;) {
   // Формируем вопрос и правильный ответ

@@ -1,8 +1,8 @@
-import { getCalc, intro, getAnswer } from '../index.js';
+import { getCalc, makeIntro, getAnswer } from '../index.js';
 
 const calc = () => {
   // Приветствие (сохраняем имя пользователя)
-  const username = intro('What is the result of the expression?');
+  const username = makeIntro('What is the result of the expression?');
   // Общий цикл для всех игр
   for (let i = 0; i < 3;) {
   // Формируем вопрос и правильный ответ

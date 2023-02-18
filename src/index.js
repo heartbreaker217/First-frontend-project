@@ -3,13 +3,13 @@ import readlineSync from 'readline-sync';
 import greeting from './cli.js';
 
 // Функция, возвращающая случайное число в промежутке [0, max)
-const getRandom = (max) => {
+export const getRandom = (max) => {
   const random = Math.floor(Math.random() * max);
   return random;
 };
 
 // Функция, возвращающая случайное число в промежутке [min, max]
-const getRandomInt = (min, max) => {
+export const getRandomInt = (min, max) => {
   min = Math.ceil(min);
   max = Math.floor(max);
   const randomInt = Math.floor(Math.random() * (max - min + 1)) + min;
@@ -17,20 +17,20 @@ const getRandomInt = (min, max) => {
 };
 
 // Функция, которая выводит на экран правила игры и запрашивает имя пользователя
-const intro = (rules) => {
+export const makeIntro = (rules) => {
   const username = greeting();
   console.log(rules);
   return username;
 };
 
 // Функция, запрашивающая ответ пользователя
-const getAnswer = () => {
+export const getAnswer = () => {
   const answer = readlineSync.question('Your answer: ');
   return answer;
 };
 
 // Функция, определяющая простоту случайного числа из промежутка [0, 100]
-const isPrime = () => {
+export const isPrime = () => {
   const number = getRandom(101);
   console.log(`Question: ${number}`);
   if (number < 2) {
@@ -51,89 +51,80 @@ const isPrime = () => {
 };
 
 // Функция, возвращающая арифметическую прогрессию от 5 до 10 чисел с одним пропущенным числом
-const arithProgression = () => {
+export const getProgression = () => {
   const progressionLength = getRandomInt(5, 10);
-  const firstNumber = getRandom(101);
+  const firstOfProgression = getRandom(101);
   const progressionStep = getRandomInt(1, 10);
-  const progressionArr = [firstNumber];
+  const progressionArray = [firstOfProgression];
 
   for (let i = 0; i < progressionLength - 1; i += 1) {
-    progressionArr.push(progressionArr[i] + progressionStep);
+    progressionArray.push(progressionArray[i] + progressionStep);
   }
 
-  const correctAnswer = progressionArr[getRandom(progressionLength)];
+  const correctAnswer = progressionArray[getRandom(progressionLength)];
 
   for (let j = 0; j < progressionLength; j += 1) {
-    if (progressionArr[j] === correctAnswer) {
-      progressionArr[j] = '..';
+    if (progressionArray[j] === correctAnswer) {
+      progressionArray[j] = '..';
       break;
     }
   }
-  console.log(`Question: ${progressionArr.join(' ')}`);
+  console.log(`Question: ${progressionArray.join(' ')}`);
 
   return correctAnswer.toString();
 };
 
 // Функция, возвращающая НОД двух случайный чисел из промежутка [0, 100]
-const getGCD = () => {
-  let a = getRandom(101);
-  let b = getRandom(101);
-  console.log(`Question: ${a} ${b}`);
+export const getGCD = () => {
+  let firstNumber = getRandom(101);
+  let secondNumber = getRandom(101);
+  console.log(`Question: ${firstNumber} ${secondNumber}`);
+  if (firstNumber === secondNumber) {
+    return firstNumber;
+  }
 
-  while (a !== 0 && b !== 0) {
-    if (a === b) {
-      return a;
-    } if (a > b) {
-      a %= b;
+  while (firstNumber !== 0 && secondNumber !== 0) {
+    if (firstNumber > secondNumber) {
+      firstNumber %= secondNumber;
     } else {
-      b %= a;
+      secondNumber %= firstNumber;
     }
   }
-  const correctAnswer = a + b;
 
-  return correctAnswer.toString();
+  return (firstNumber + secondNumber).toString();
 };
 
 // Функция, выполняющая операции "+, - и *" с двумя случайными числами в промежутке [0, 100]
-const getCalc = () => {
-  const random1 = getRandom(101);
-  const random2 = getRandom(101);
+export const getCalc = () => {
+  const firstTerm = getRandom(101);
+  const secondTerm = getRandom(101);
   const operatorIndex = getRandom(3);
-  let operator = '';
+  let operator = '*';
   if (operatorIndex === 0) {
     operator = '+';
   } else if (operatorIndex === 1) {
     operator = '-';
-  } else {
-    operator = '*';
   }
-  console.log(`Question: ${random1} ${operator} ${random2}`);
-  let correctAnswer;
+
+  console.log(`Question: ${firstTerm} ${operator} ${secondTerm}`);
+  let correctAnswer = (firstTerm * secondTerm).toString();
   if (operatorIndex === 0) {
-    correctAnswer = (random1 + random2).toString();
+    correctAnswer = (firstTerm + secondTerm).toString();
   } else if (operatorIndex === 1) {
-    correctAnswer = (random1 - random2).toString();
-  } else {
-    correctAnswer = (random1 * random2).toString();
+    correctAnswer = (firstTerm - secondTerm).toString();
   }
 
   return correctAnswer;
 };
 
 // Функция, определяющая четность случайного числа из промежутка [0, 100]
-const isEven = () => {
-  const random = getRandom(101);
-  console.log(`Question: ${random}`);
-  let correctAnswer;
-  if (random % 2 === 0) {
+export const isEven = () => {
+  const randomNumber = getRandom(101);
+  console.log(`Question: ${randomNumber}`);
+  let correctAnswer = 'no';
+  if (randomNumber % 2 === 0) {
     correctAnswer = 'yes';
-  } else {
-    correctAnswer = 'no';
   }
 
   return correctAnswer;
-};
-
-export {
-  getRandom, intro, getGCD, getCalc, isEven, getAnswer, getRandomInt, arithProgression, isPrime,
 };

@@ -1,8 +1,8 @@
-import { isEven, intro, getAnswer } from '../index.js';
+import { isEven, makeIntro, getAnswer } from '../index.js';
 
 const even = () => {
   // Приветствие (сохраняем имя пользователя)
-  const username = intro('Answer "yes" if the number is even, otherwise answer "no"');
+  const username = makeIntro('Answer "yes" if the number is even, otherwise answer "no"');
   // Общий цикл для всех игр
   for (let i = 0; i < 3;) {
   // Формируем вопрос и правильный ответ
