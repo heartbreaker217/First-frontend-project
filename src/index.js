@@ -76,8 +76,9 @@ export const getProgression = () => {
 
 // Функция, возвращающая НОД двух случайный чисел из промежутка [0, 100]
 export const getGCD = () => {
-  let firstNumber = getRandom(101);
-  let secondNumber = getRandom(101);
+  const max = 101;
+  let firstNumber = getRandom(max);
+  let secondNumber = getRandom(max);
   console.log(`Question: ${firstNumber} ${secondNumber}`);
   if (firstNumber === secondNumber) {
     return firstNumber;
@@ -96,9 +97,11 @@ export const getGCD = () => {
 
 // Функция, выполняющая операции "+, - и *" с двумя случайными числами в промежутке [0, 100]
 export const getCalc = () => {
-  const firstTerm = getRandom(101);
-  const secondTerm = getRandom(101);
-  const operatorIndex = getRandom(3);
+  const max = 101;
+  const firstTerm = getRandom(max);
+  const secondTerm = getRandom(max);
+  const operatorsQuantity = 3;
+  const operatorIndex = getRandom(operatorsQuantity);
   let operator = '*';
   if (operatorIndex === 0) {
     operator = '+';
