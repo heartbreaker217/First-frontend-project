@@ -81,7 +81,7 @@ export const getGCD = () => {
   let secondNumber = getRandom(max);
   console.log(`Question: ${firstNumber} ${secondNumber}`);
   if (firstNumber === secondNumber) {
-    return firstNumber;
+    return firstNumber.toString();
   }
 
   while (firstNumber !== 0 && secondNumber !== 0) {
