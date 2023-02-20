@@ -1,15 +1,26 @@
-import { isEven, makeIntro, getAnswer } from '../index.js';
+import getAnswer from '../index.js';
+import { getRandomInt, makeIntro } from '../utils.js';
+
+const isEven = () => {
+  const randomNumber = getRandomInt(0, 100);
+  console.log(`Question: ${randomNumber}`);
+  if (randomNumber % 2 === 0) {
+    return true;
+  }
+
+  return false;
+};
 
 const even = () => {
-  // Приветствие (сохраняем имя пользователя)
   const username = makeIntro('Answer "yes" if the number is even, otherwise answer "no"');
-  // Общий цикл для всех игр
   for (let i = 0; i < 3;) {
-  // Формируем вопрос и правильный ответ
-    const correctAnswer = isEven();
-    // Ответ пользователя (сохраняем)
+    let correctAnswer = 'no';
+
+    if (isEven()) {
+      correctAnswer = 'yes';
+    }
+
     const userAnswer = getAnswer();
-    // Проверяем правильность ответа
     if (userAnswer === correctAnswer) {
       console.log('Correct!');
       i += 1;

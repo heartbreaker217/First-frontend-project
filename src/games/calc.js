@@ -1,15 +1,34 @@
-import { getCalc, makeIntro, getAnswer } from '../index.js';
+import getAnswer from '../index.js';
+import { getRandomInt, makeIntro } from '../utils.js';
+
+const getCalc = () => {
+  const firstTerm = getRandomInt(0, 100);
+  const secondTerm = getRandomInt(0, 100);
+  const operatorsQuantity = 2;
+  const operatorIndex = getRandomInt(0, operatorsQuantity);
+  let operator = '*';
+  if (operatorIndex === 0) {
+    operator = '+';
+  } else if (operatorIndex === 1) {
+    operator = '-';
+  }
+
+  console.log(`Question: ${firstTerm} ${operator} ${secondTerm}`);
+  let answer = (firstTerm * secondTerm).toString();
+  if (operatorIndex === 0) {
+    answer = (firstTerm + secondTerm).toString();
+  } else if (operatorIndex === 1) {
+    answer = (firstTerm - secondTerm).toString();
+  }
+
+  return answer;
+};
 
 const calc = () => {
-  // Приветствие (сохраняем имя пользователя)
   const username = makeIntro('What is the result of the expression?');
-  // Общий цикл для всех игр
   for (let i = 0; i < 3;) {
-  // Формируем вопрос и правильный ответ
     const correctAnswer = getCalc();
-    // Ответ пользователя (сохраняем)
     const userAnswer = getAnswer();
-    // Проверяем правильность ответа
     if (userAnswer === correctAnswer) {
       console.log('Correct!');
       i += 1;

@@ -1,15 +1,30 @@
-import { getGCD, makeIntro, getAnswer } from '../index.js';
+import getAnswer from '../index.js';
+import { getRandomInt, makeIntro } from '../utils.js';
+
+const getGCD = () => {
+  let firstNumber = getRandomInt(0, 100);
+  let secondNumber = getRandomInt(0, 100);
+  console.log(`Question: ${firstNumber} ${secondNumber}`);
+  if (firstNumber === secondNumber) {
+    return firstNumber.toString();
+  }
+
+  while (firstNumber !== 0 && secondNumber !== 0) {
+    if (firstNumber > secondNumber) {
+      firstNumber %= secondNumber;
+    } else {
+      secondNumber %= firstNumber;
+    }
+  }
+
+  return (firstNumber + secondNumber).toString();
+};
 
 const gcd = () => {
-  // Приветствие (сохраняем имя пользователя)
   const username = makeIntro('Find the greatest common divisor of given numbers.');
-  // Общий цикл для всех игр
   for (let i = 0; i < 3;) {
-  // Формируем вопрос и правильный ответ
     const correctAnswer = getGCD();
-    // Ответ пользователя (сохраняем)
     const userAnswer = getAnswer();
-    // Проверяем правильность ответа
     if (userAnswer === correctAnswer) {
       console.log('Correct!');
       i += 1;
