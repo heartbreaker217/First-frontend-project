@@ -1,9 +1,7 @@
-import getAnswer from '../index.js';
-import { getRandomInt, makeIntro } from '../utils.js';
+import game from '../index.js';
+import getRandomInt from '../utils.js';
 
-const isPrime = () => {
-  const number = getRandomInt(0, 100);
-  console.log(`Question: ${number}`);
+const isPrime = (number) => {
   if (number < 2) {
     return false;
   }
@@ -20,25 +18,25 @@ const isPrime = () => {
   return true;
 };
 
-const prime = () => {
-  const username = makeIntro('Answer "yes" if given number is prime. Otherwise answer "no".');
-  for (let i = 0; i < 3;) {
-    let correctAnswer = 'no';
+const gamePrime = () => {
+  const result = [];
+  for (let i = 0; i < 3; i += 1) {
+    const randomNumber = getRandomInt(0, 100);
+    const question = `Question: ${randomNumber}`;
 
-    if (isPrime()) {
-      correctAnswer = 'yes';
+    let answer = 'no';
+    if (isPrime(randomNumber)) {
+      answer = 'yes';
     }
 
-    const userAnswer = getAnswer();
-    if (userAnswer === correctAnswer) {
-      console.log('Correct!');
-      i += 1;
-    } else {
-      return console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'\nLet's try again, ${username}!`);
-    }
+    result.push([question, answer]);
   }
 
-  return console.log(`Congratulations, ${username}!`);
+  return result;
+};
+
+const prime = () => {
+  game('Answer "yes" if given number is prime. Otherwise answer "no".', gamePrime());
 };
 
 export default prime;
