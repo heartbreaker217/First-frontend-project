@@ -1,5 +1,4 @@
-import game from '../index.js';
-import getRandomInt from '../utils.js';
+import { game, gamesLoop, generateRound } from '../index.js';
 
 const isPrime = (number) => {
   if (number < 2) {
@@ -18,25 +17,13 @@ const isPrime = (number) => {
   return true;
 };
 
-const gamePrime = () => {
-  const result = [];
-  for (let i = 0; i < 3; i += 1) {
-    const randomNumber = getRandomInt(0, 100);
-    const question = `Question: ${randomNumber}`;
-
-    let answer = 'no';
-    if (isPrime(randomNumber)) {
-      answer = 'yes';
-    }
-
-    result.push([question, answer]);
-  }
-
+const generatePrime = () => {
+  const result = generateRound(isPrime);
   return result;
 };
 
 const prime = () => {
-  game('Answer "yes" if given number is prime. Otherwise answer "no".', gamePrime());
+  game('Answer "yes" if given number is prime. Otherwise answer "no".', gamesLoop(generatePrime));
 };
 
 export default prime;
