@@ -2,7 +2,7 @@
   "name": "@hexlet/code",
   "version": "1.0.0",
   "type": "module",
-  "description": "[![Actions Status](https://github.com/heartbreaker217/frontend-project-44/workflows/hexlet-check/badge.svg)](https://github.com/heartbreaker217/frontend-project-44/actions)",
+  "description": "A 'Brain-Games' application made with the support of Hexlet. Contains 5 games, work in terminal.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
