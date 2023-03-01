@@ -1,5 +1,5 @@
 import getRandomInt from '../utils.js';
-import { game, rounds } from '../index.js';
+import { game, roundsQuantity } from '../index.js';
 
 const calculation = (operator, number1, number2) => {
   switch (operator) {
@@ -14,7 +14,7 @@ const calculation = (operator, number1, number2) => {
   }
 };
 
-const generateCalc = () => {
+const generateRound = () => {
   const firstTerm = getRandomInt(0, 100);
   const secondTerm = getRandomInt(0, 100);
   const operators = '+-*';
@@ -26,17 +26,13 @@ const generateCalc = () => {
   return [question, answer];
 };
 
-const loopForCalc = () => {
+const runGameCalc = () => {
   const result = [];
-  for (let i = 0; i < rounds; i += 1) {
-    result.push(generateCalc());
+  for (let i = 0; i < roundsQuantity; i += 1) {
+    result.push(generateRound());
   }
 
-  return result;
+  game('What is the result of the expression?', result);
 };
 
-const calc = () => {
-  game('What is the result of the expression?', loopForCalc());
-};
-
-export default calc;
+export default runGameCalc;

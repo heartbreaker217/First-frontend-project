@@ -1,5 +1,5 @@
 import getRandomInt from '../utils.js';
-import { game, rounds } from '../index.js';
+import { game, roundsQuantity } from '../index.js';
 
 const getProgression = (firstOfProgression, progressionStep, progressionLength) => {
   const progressionArray = [firstOfProgression];
@@ -11,32 +11,27 @@ const getProgression = (firstOfProgression, progressionStep, progressionLength) 
   return progressionArray;
 };
 
-const generateProgression = () => {
+const generateRound = () => {
   const length = getRandomInt(5, 10);
   const step = getRandomInt(1, 10);
   const firstElement = getRandomInt(0, 100);
   const progression = getProgression(firstElement, step, length);
 
   const indexOfAnswer = getRandomInt(0, progression.length - 1);
-  const randomElement = progression[indexOfAnswer];
-  const answer = randomElement.toString();
+  const answer = (progression[indexOfAnswer]).toString();
   progression[indexOfAnswer] = '..';
   const question = `${progression.join(' ')}`;
 
   return [question, answer];
 };
 
-const loopForProgression = () => {
+const runGameProgression = () => {
   const result = [];
-  for (let i = 0; i < rounds; i += 1) {
-    result.push(generateProgression());
+  for (let i = 0; i < roundsQuantity; i += 1) {
+    result.push(generateRound());
   }
 
-  return result;
+  game('What number is missing in the progression?', result);
 };
 
-const progression = () => {
-  game('What number is missing in the progression?', loopForProgression());
-};
-
-export default progression;
+export default runGameProgression;

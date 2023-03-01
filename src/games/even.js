@@ -1,5 +1,5 @@
 import getRandomInt from '../utils.js';
-import { game, rounds } from '../index.js';
+import { game, roundsQuantity } from '../index.js';
 
 const isEven = (number) => {
   if (number % 2 === 0) {
@@ -9,7 +9,7 @@ const isEven = (number) => {
   return false;
 };
 
-const generateEven = () => {
+const generateRound = () => {
   const randomNumber = getRandomInt(0, 100);
 
   const question = `${randomNumber}`;
@@ -18,17 +18,13 @@ const generateEven = () => {
   return [question, answer];
 };
 
-const loopForEven = () => {
+const runGameEven = () => {
   const result = [];
-  for (let i = 0; i < rounds; i += 1) {
-    result.push(generateEven());
+  for (let i = 0; i < roundsQuantity; i += 1) {
+    result.push(generateRound());
   }
 
-  return result;
+  game('Answer "yes" if the number is even, otherwise answer "no"', result);
 };
 
-const even = () => {
-  game('Answer "yes" if the number is even, otherwise answer "no"', loopForEven());
-};
-
-export default even;
+export default runGameEven;
