@@ -10,7 +10,7 @@ const calculation = (operator, number1, number2) => {
     case '-':
       return (number1 - number2).toString();
     default:
-      return false;
+      throw new Error(`${operator} is unexception operator`);
   }
 };
 
